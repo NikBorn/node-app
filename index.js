@@ -20,11 +20,15 @@ const server = http.createServer((request, response)=>{
   const path = parsedUrl.pathname;
   const trimmedPath = path.replace(/^\/+|\/+$/g, '');
 
+  //Get the HTTP method
+  const method = request.method.toLowerCase();
+
+
   //send the responsen
   response.end('Hello World\n');
 
   //console log the request path
-  console.log('Request received on path: '+trimmedPath)
+  console.log('Request received on path: '+trimmedPath+' with method: '+method);
 
 })
 
