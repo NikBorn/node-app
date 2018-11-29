@@ -8,6 +8,7 @@
 
 const http = require('http');
 const url = require('url');
+const StringDecoder = require('string_decoder').StringDecoder;
 
 //The servier should respond to all requests with astring.
 
@@ -30,13 +31,28 @@ const server = http.createServer((request, response)=>{
   const headers = request.headers;
 
 
-  //send the responsen
-  response.end('Hello World\n');
+  //Get the payload, if there is any
+  const decoder = new StringDecoder('utf-8');
+  let buffer = '';
 
-  //console log the request path
-  console.log('Request received with these headers: ', headers);
+  request.on('data', (data)=>{
+    buffer += decoder.write(data);
+  })
+  request.on('end', ()=>{
+    buffer += decoder.end();
+
+    //send the responsen
+    response.end('Hello World\n');
+
+    //console log the request path
+    console.log('Request received with this payload: ', buffer);
+    
+  })
+
+
 
 })
+
 
 //Start the server and have it listening on port 300.
 
