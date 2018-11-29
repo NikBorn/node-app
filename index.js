@@ -83,7 +83,7 @@ const server = http.createServer((request, response)=>{
 //Start the server 
 
 server.listen(config.port, ()=>{
-  console.log('The server is listening on port '+config.port+' in '+config.envName+' mode')
+  console.log('The server is listening on port '+config.port+' in '+config.envN and ame+' mode')
 })
 
 
