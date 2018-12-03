@@ -16,8 +16,8 @@ const _data = require('./lib/data');
 
 //TESTING
 // @todo Delte this
-_data.create('test', 'newFile', { 'joe' : 'bob' }, (err)=>{
-  console.log('this was the error', err);
+_data.read('test', 'newFile', (err, data)=>{
+  console.log('this was the error ', err, 'and this was the data ', data);
 })
 
 //Instantiate the HTTP server
