@@ -12,6 +12,13 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs'); //file system that is built into Node.
+const _data = require('./lib/data');
+
+//TESTING
+// @todo Delte this
+_data.create('test', 'newFile', { 'joe' : 'bob' }, (err)=>{
+  console.log('this was the error', err);
+})
 
 //Instantiate the HTTP server
 const httpServer = http.createServer((request, response)=>{
