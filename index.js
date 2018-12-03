@@ -57,7 +57,6 @@ const unifiedServer = (request, response) => {
   //Get the headers as an object
   const headers = request.headers;
 
-
   //Get the payload, if there is any
   const decoder = new StringDecoder('utf-8');
   let buffer = '';
@@ -104,9 +103,6 @@ const unifiedServer = (request, response) => {
 
   })
 }
-
-
-
 
 //Define handlers
 const handlers = {};
