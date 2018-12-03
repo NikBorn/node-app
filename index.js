@@ -12,13 +12,8 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs'); //file system that is built into Node.
-const _data = require('./lib/data');
+const handlers = require('./lib/handlers');
 
-//TESTING
-// @todo Delte this
-_data.delete('test', 'newFile', (err)=>{
-  console.log('this was the error ', err);
-})
 
 //Instantiate the HTTP server
 const httpServer = http.createServer((request, response)=>{
@@ -111,20 +106,8 @@ const unifiedServer = (request, response) => {
   })
 }
 
-//Define handlers
-const handlers = {};
-//sample handler
-handlers.sample = (data, callback) => {
-  //callback HTTP status code and a payload object
-  callback(406, {'name': 'sample handler'});
-
-}
-//not found handler
-handlers.notFound = (data, callback) => {
-  callback(404);
-}
-
 //Define a request router
 const router = {
-  'sample' : handlers.sample
+  'ping' : handlers.ping,
+  'users' : handlers.users
 }
